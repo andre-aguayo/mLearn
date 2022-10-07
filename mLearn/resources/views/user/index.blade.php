@@ -11,7 +11,13 @@
         @if (Session::get('success'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>Cadastrado com sucesso!</strong>
+                <strong>{{ Session::get('success') }}</strong>
+            </div>
+        @endif
+        @if (Session::get('errors'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ Session::get('errors') }}</strong>
             </div>
         @endif
         <div class="col-md-12 text-right mb-4">
@@ -27,6 +33,7 @@
                     <th scope="col">NOME</th>
                     <th scope="col">TELEFONE</th>
                     <th scope="col">NÍVEL DE ACESSO</th>
+                    <th scope="col">ALTERAR NIVEL DE ACESSO</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +44,23 @@
                         <th scope="row">{{ $user->name }}</th>
                         <th scope="row">{{ $user->msisdn }}</th>
                         <th scope="row">{{ $user->access_level }}</th>
+                        <th scope="row">
+                            @if ($user->access_level == 'pro')
+                                <form action="/user/upgrade/{{ $user->external_id }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">
+                                        UPGRADE
+                                    </button>
+                                </form>
+                            @else
+                                <form action="/user/downgrade/{{ $user->external_id }}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-danger">
+                                        DOWNGRADE
+                                    </button>
+                                </form>
+                            @endif
+                        </th>
                     </tr>
                 @endforeach
             </tbody>

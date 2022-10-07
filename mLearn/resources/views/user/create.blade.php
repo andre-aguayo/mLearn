@@ -15,12 +15,6 @@
                 </div>
             </div>
         @endif
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <strong>Cadastrado com sucesso!</strong>
-            </div>
-        @endif
-
         <h3>Cadastro de usuario</h3>
         <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
 
