@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'name' => 'required|regex:/^[\pL\s]+$/u',
             'access_level' => 'required|in:pro,premium',
             'msisdn' => 'required|numeric',
-            'password' => 'required|min_digits:4',
+            'password' => 'required',
         ];
     }
 

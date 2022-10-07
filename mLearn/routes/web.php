@@ -18,4 +18,8 @@ Route::prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
 
     Route::get('/create', [UserController::class, 'create'])->name('user.create');
+
+    Route::post('/upgrade/{userExternalId}', [UserController::class, 'upgradePage'])->name('user.upgrade');
+
+    Route::post('/downgrade/{userExternalId}', [UserController::class, 'downgradePage'])->name('user.downgrade');
 });

@@ -14,4 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+Route::prefix('user')->group(function () {
+    Route::post('/store', [UserController::class, 'store']);
+
+    Route::put('/upgrade/{userExternalId}', [UserController::class, 'upgrade']);
+
+    Route::put('/downgrade/{userExternalId}', [UserController::class, 'downgrade']);
+});
