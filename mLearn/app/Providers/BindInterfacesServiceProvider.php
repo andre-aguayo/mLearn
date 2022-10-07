@@ -2,11 +2,8 @@
 
 namespace App\Providers;
 
-use App\Services\InvestmentInterface;
-use App\Services\InvestmentService;
-use App\Services\InvestorInterface;
-use App\Services\InvestorService;
 use App\Services\UserService;
+use App\Services\UserServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class BindInterfacesServiceProvider extends ServiceProvider
@@ -28,6 +25,6 @@ class BindInterfacesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(UserServic::class, UserService::class);
+        $this->app->bind(UserServiceInterface::class, UserService::class);
     }
 }

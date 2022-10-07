@@ -22,6 +22,7 @@ class User extends Authenticatable
         'msisdn',
         'name',
         'access_level',
+        'password'
     ];
 
     /**
