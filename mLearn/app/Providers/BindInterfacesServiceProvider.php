@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Services\UserService;
 use App\Services\UserServiceInterface;
+use App\Services\QualificaApiConnectorInterface;
+use App\Services\QualificaApiConnectorService;
 use Illuminate\Support\ServiceProvider;
 
 class BindInterfacesServiceProvider extends ServiceProvider
@@ -25,6 +27,7 @@ class BindInterfacesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind(QualificaApiConnectorInterface::class, QualificaApiConnectorService::class);
         $this->app->bind(UserServiceInterface::class, UserService::class);
     }
 }
