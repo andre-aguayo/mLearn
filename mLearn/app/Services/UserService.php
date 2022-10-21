@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Hash;
 use App\Services\QualificaApiConnectorInterface;
-use Error;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -85,11 +84,11 @@ class UserService implements UserServiceInterface
     ): bool {
         try {
             $user = DB::transaction(function ()  use ($user, $toAccessLevel) {
-                //call api to change
                 if ($toAccessLevel == AccessLevelType::PRO)
-                    $e = 1;
-                $changed = $this->qualificaApi->downgrade($user->external_id);
+                    //call api to downgrade user access
+                    $changed = $this->qualificaApi->downgrade($user->external_id);
 
+                //call api to upgrade user access
                 $changed = $this->qualificaApi->upgrade($user->external_id);
 
                 //Update user access level

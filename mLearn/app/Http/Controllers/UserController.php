@@ -6,7 +6,6 @@ use App\EnumTypes\AccessLevelType;
 use App\Http\Controllers\Traits\ApiResponseTrait;
 use App\Http\Requests\UserRequest;
 use App\Services\UserServiceInterface;
-use Error;
 use Exception;
 use Illuminate\Http\Request;
 

@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
 
 class QualificaApiConnectorService implements QualificaApiConnectorInterface
